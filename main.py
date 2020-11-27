@@ -51,7 +51,7 @@ def gen_data(COLUMNS_COUNT, DAYS_NUMBER):
     ROWS_NUMBER = CLASSES_COUNT * DAYS_NUMBER
     CNAME = str(COLUMNS_COUNT)
     DNAME = str(DAYS_NUMBER)
-    while len(CNAME) < 3:
+    while len(CNAME) < 4:
         CNAME = '0' + CNAME
     while len(DNAME) < 4:
         DNAME = '0' + DNAME
@@ -60,10 +60,6 @@ def gen_data(COLUMNS_COUNT, DAYS_NUMBER):
 
 columns_counts = [1,4,16,64,256]
 days_counts = [30, 90, 182, 365, 730, 1460]
-
-# for ccount in columns_counts:
-#     for dcount in days_counts:
-#         gen_data(dcount, ccount)
 
 def sql_script(COLUMNS_COUNT, CNAME, DNAME):
     text_file = open('scripts/script-' + CNAME + '_columns-' + DNAME + '_days' + '.sql', "w")
@@ -94,10 +90,10 @@ def gen_query(value, klass, date_start, date_finish, table='data'):
     date_s = '20' + date_start.strftime("%y-%m-%d")
     date_f = '20' + date_finish.strftime("%y-%m-%d")
     return "SELECT SUM(value_" + str(value-1) + ") FROM " + table + " where day BETWEEN '" + date_s + "' AND '" + date_f + "' AND class = '" + klass + "';\n"
-# sql_script()
 
-gen_data(1, 30)
-
+for ccount in columns_counts:
+    for dcount in days_counts:
+        gen_data(dcount, ccount)
 
 
 
