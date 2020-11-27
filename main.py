@@ -70,7 +70,7 @@ def sql_script(COLUMNS_COUNT, CNAME, DNAME):
     text_file.write('DROP FOREIGN TABLE data;\n')
     text_file.write('CREATE FOREIGN TABLE data (\n')
     text_file.write('        day date,\n')
-    text_file.write('        class text,,\n')
+    text_file.write('        class text,\n')
     for i in range(COLUMNS_COUNT - 1):
         text_file.write('       value_' + (str(i)) + ' integer,\n')
     text_file.write('       value_' + (str(COLUMNS_COUNT-1)) + ' integer\n')
@@ -91,9 +91,9 @@ def sql_script(COLUMNS_COUNT, CNAME, DNAME):
 
 
 def gen_query(value, klass, date_start, date_finish, table='data'):
-    date_s = date_start.strftime("%y-%m-%d")
-    date_f = date_finish.strftime("%y-%m-%d")
-    return "SELECT SUM(value_" + str(value) + ") FROM " + table + " where day BETWEEN '" + date_s + "' AND '" + date_f + "' AND class = '" + klass + "';\n"
+    date_s = '20' + date_start.strftime("%y-%m-%d")
+    date_f = '20' + date_finish.strftime("%y-%m-%d")
+    return "SELECT SUM(value_" + str(value-1) + ") FROM " + table + " where day BETWEEN '" + date_s + "' AND '" + date_f + "' AND class = '" + klass + "';\n"
 # sql_script()
 
 gen_data(1, 30)
