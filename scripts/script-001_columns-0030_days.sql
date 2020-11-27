@@ -1,8 +1,8 @@
-DROP FOREIGN TABLE data 
+DROP FOREIGN TABLE data;
 CREATE FOREIGN TABLE data (
         day date,
-        day date,
-       vaule_0 integer
+        class text,,
+       value_0 integer
 ) SERVER data_csv
 OPTIONS( filename '/home/stach/zad2/data/data-001_columns-0030_days.csv', format 'csv');
 DROP TABLE data_local;

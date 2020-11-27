@@ -67,10 +67,10 @@ days_counts = [30, 90, 182, 365, 730, 1460]
 
 def sql_script(COLUMNS_COUNT, CNAME, DNAME):
     text_file = open('scripts/script-' + CNAME + '_columns-' + DNAME + '_days' + '.sql', "w")
-    text_file.write('DROP FOREIGN TABLE data \n')
+    text_file.write('DROP FOREIGN TABLE data;\n')
     text_file.write('CREATE FOREIGN TABLE data (\n')
     text_file.write('        day date,\n')
-    text_file.write('        day date,\n')
+    text_file.write('        class text,,\n')
     for i in range(COLUMNS_COUNT - 1):
         text_file.write('       value_' + (str(i)) + ' integer,\n')
     text_file.write('       value_' + (str(COLUMNS_COUNT-1)) + ' integer\n')
