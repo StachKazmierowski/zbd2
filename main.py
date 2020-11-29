@@ -86,6 +86,11 @@ def sql_script(COLUMNS_COUNT, CNAME, DNAME):
     text_file.close()
 
 
+# def gen_query(value, klass, date_start, date_finish, table='data'):
+#     date_s = '20' + date_start.strftime("%y-%m-%d")
+#     date_f = '20' + date_finish.strftime("%y-%m-%d")
+#     return "SELECT SUM(value_" + str(value-1) + ") FROM " + table + " where day BETWEEN '" + date_s + "' AND '" + date_f + "' AND class = '" + klass + "';\n"
+
 def gen_query(value, klass, date_start, date_finish, table='data'):
     date_s = '20' + date_start.strftime("%y-%m-%d")
     date_f = '20' + date_finish.strftime("%y-%m-%d")
@@ -93,7 +98,7 @@ def gen_query(value, klass, date_start, date_finish, table='data'):
 
 for ccount in columns_counts:
     for dcount in days_counts:
-        gen_data(dcount, ccount)
+        gen_data(ccount, dcount)
 
 
 
